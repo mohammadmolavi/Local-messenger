@@ -9,16 +9,31 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    addcontacts.cpp \
+    chatpage.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    newchat.cpp \
+    signup_page.cpp
 
 HEADERS += \
-    mainwindow.h
+    addcontacts.h \
+    chatpage.h \
+    mainwindow.h \
+    newchat.h \
+    signup_page.h
 
 FORMS += \
-    mainwindow.ui
+    addcontacts.ui \
+    chatpage.ui \
+    mainwindow.ui \
+    newchat.ui \
+    signup_page.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    Graphics.qrc

@@ -1,6 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
+#include <signup_page.h>
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
@@ -15,7 +15,14 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+
+    void on_login_clicked();
+
+    void on_signup_clicked();
+
 private:
     Ui::MainWindow *ui;
+    Signup_page *signuppage;
 };
 #endif // MAINWINDOW_H

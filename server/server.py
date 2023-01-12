@@ -1,8 +1,7 @@
 import socket
 import os
 import threading
-from _thread import *
-
+import mysql.connector
 
 def sendFile(con, direc2):
     direc = direc2.split('/')
@@ -47,6 +46,8 @@ def recvFile(con):
 
         file.close()
         sendFile(clients[int(recieverid)][0], path)
+
+
 '''
 def recvMessage():
 	pass
@@ -56,40 +57,54 @@ def sendMessage(idSender , idReciever):
     idDic[idSender]
 '''
 
+
 def connect_client(sock):
     while True:
         clients.append(sock.accept())
         print('Connected with ', clients[-1][1])
         t2 = threading.Thread(target=login, args=(clients[-1][0],))
         t2.start()
-        # start_new_thread(recvFile, (clients[-1][0], len(clients) - 1,))
 
 
 def signup(con):
-	print('signup')
-	fullname = con.recv(1024).decode()
-	username = con.recv(1024).decode()
-	email = con.recv(1024).decode()
-	phone = con.recv(1024).decode()
-	password = con.recv(1024).decode()
-    #insert the information to db
-	login(con)
+    print("signup")
+    fullname = con.recv(1024).decode()
+    username = con.recv(1024).decode()
+    email = con.recv(1024).decode()
+    phone = con.recv(1024).decode()
+    password = con.recv(1024).decode()
+    # insert the information to db
+    login(con)
 
 
 def login(con):
     username = con.recv(1024).decode()
-    if username == "signup":
+    if (username== "signup"):
         signup(con)
+        return
+    password = con.recv(1024).decode()
+    connection = mysql.connector.connect(host='localhost',
+                                         database='messenger',
+                                         user='root',
+                                         password='')
+
+    cursor = connection.cursor()
+    cursor.execute("SELECT Username,Password FROM clients ")
+
+    myresult = cursor.fetchall()
+
+    check=False
+    for x in myresult:
+        if(x[0] ==username and x[1]==password):
+            con.send("True".encode())
+            check=True
+            break
+
+    if(check==False):
+        con.send("False".encode())
+        login(con)
     else:
-        password = con.recv(1024).decode()
-        print(password)
-    #check user and password in db
-    #if user == true:
-        #con.send("True".encode())
-        #idDic[username] = con
-    #else:
-        #con.send("False".encode())
-        #login(con)
+        pass
 
 
 def main():
@@ -98,9 +113,9 @@ def main():
 
     global idDic
     idDic = {}
-    
+
     global t2
-   
+
     sock = socket.socket()
     port = 12345
     host = ''

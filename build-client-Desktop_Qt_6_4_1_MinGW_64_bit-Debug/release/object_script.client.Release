@@ -1,0 +1,14 @@
+release/addcontacts.o
+release/chatpage.o
+release/clientsocket.o
+release/main.o
+release/mainwindow.o
+release/newchat.o
+release/signup_page.o
+release/qrc_Graphics.o
+release/moc_addcontacts.o
+release/moc_chatpage.o
+release/moc_clientsocket.o
+release/moc_mainwindow.o
+release/moc_newchat.o
+release/moc_signup_page.o

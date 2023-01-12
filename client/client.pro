@@ -1,5 +1,5 @@
 QT       += core gui
-
+QT       += network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
@@ -11,6 +11,7 @@ CONFIG += c++17
 SOURCES += \
     addcontacts.cpp \
     chatpage.cpp \
+    clientsocket.cpp \
     main.cpp \
     mainwindow.cpp \
     newchat.cpp \
@@ -19,6 +20,7 @@ SOURCES += \
 HEADERS += \
     addcontacts.h \
     chatpage.h \
+    clientsocket.h \
     mainwindow.h \
     newchat.h \
     signup_page.h

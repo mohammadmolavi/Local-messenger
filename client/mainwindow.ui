@@ -13,7 +13,17 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow#MainWindow{
+background-color: qlineargradient(spread:pad, x1:0.804, y1:0.823182, x2:0, y2:0, stop:0 rgba(170, 255, 225, 255), stop:1 rgba(77, 160, 255, 255));
+}</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">QWidget#centralwidget{
+background-color: qlineargradient(spread:pad, x1:0.804, y1:0.823182, x2:0, y2:0, stop:0 rgba(170, 255, 225, 255), stop:1 rgba(77, 160, 255, 255));
+}</string>
+   </property>
    <layout class="QVBoxLayout" name="verticalLayout_4">
     <item>
      <widget class="QWidget" name="widget_7" native="true"/>
@@ -72,52 +82,6 @@
             </layout>
            </widget>
           </item>
-          <item>
-           <widget class="QWidget" name="widget_5" native="true">
-            <layout class="QHBoxLayout" name="horizontalLayout">
-             <item>
-              <spacer name="horizontalSpacer_3">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>40</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-             <item>
-              <widget class="QPushButton" name="login">
-               <property name="text">
-                <string>login</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="signup">
-               <property name="text">
-                <string>signup</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <spacer name="horizontalSpacer_4">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>40</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-            </layout>
-           </widget>
-          </item>
          </layout>
         </widget>
        </item>
@@ -141,7 +105,110 @@
      </widget>
     </item>
     <item>
-     <widget class="QWidget" name="widget_6" native="true"/>
+     <widget class="QWidget" name="widget_6" native="true">
+      <widget class="QPushButton" name="signup">
+       <property name="geometry">
+        <rect>
+         <x>330</x>
+         <y>70</y>
+         <width>131</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton 
+{
+border-radius: 12px;
+background-color:#26a8ff;
+font: 700 9pt &quot;Helvetica Now Display&quot;;
+color: white;
+}
+QPushButton:hover
+{
+background: #61ffed;
+}
+QPushButton:pressed 
+{
+background: white;
+border: 2px solid #61ffed; 
+color: #61ffed;
+}
+</string>
+       </property>
+       <property name="text">
+        <string>signup</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="login">
+       <property name="geometry">
+        <rect>
+         <x>330</x>
+         <y>10</y>
+         <width>131</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="sizeIncrement">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton 
+{
+border-radius: 12px;
+background-color:#26a8ff;
+font: 700 9pt &quot;Helvetica Now Display&quot;;
+color: white;
+}
+QPushButton:hover
+{
+background: #61ffed;
+}
+QPushButton:pressed 
+{
+background: white;
+border: 2px solid #61ffed; 
+color: #61ffed;
+}
+</string>
+       </property>
+       <property name="text">
+        <string>login</string>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_4">
+       <property name="geometry">
+        <rect>
+         <x>340</x>
+         <y>50</y>
+         <width>131</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>7</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Don't have any account?</string>
+       </property>
+      </widget>
+     </widget>
     </item>
    </layout>
   </widget>

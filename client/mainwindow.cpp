@@ -44,8 +44,8 @@ void MainWindow::on_login_clicked()
 
 void MainWindow::on_signup_clicked()
 {
-    this->hide();
     signuppage ->show();
+    this->hide();
     this->socket->signup("signup");
 }
 

@@ -46,6 +46,26 @@
       <height>29</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton 
+{
+border-radius: 12px;
+background: #26a8ff;
+font: 700 9pt &quot;Helvetica Now Display&quot;;
+color: white;
+}
+QPushButton:hover
+{
+background: #61ffed;
+}
+QPushButton:pressed 
+{
+background: white;
+border: 2px solid #61ffed; 
+color: #61ffed;
+}
+</string>
+    </property>
     <property name="text">
      <string>Verify</string>
     </property>

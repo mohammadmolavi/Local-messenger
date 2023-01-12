@@ -1,6 +1,6 @@
 #ifndef SIGNUP_PAGE_H
 #define SIGNUP_PAGE_H
-
+#include<signupform.h>
 #include <QMainWindow>
 
 namespace Ui {
@@ -21,6 +21,7 @@ private slots:
 private:
     Ui::Signup_page *ui;
     QMainWindow * main_window;
+    signupform * signup_form;
 };
 
 #endif // SIGNUP_PAGE_H

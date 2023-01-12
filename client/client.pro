@@ -14,21 +14,24 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     newchat.cpp \
-    signup_page.cpp
+    signup_page.cpp \
+    signupform.cpp
 
 HEADERS += \
     addcontacts.h \
     chatpage.h \
     mainwindow.h \
     newchat.h \
-    signup_page.h
+    signup_page.h \
+    signupform.h
 
 FORMS += \
     addcontacts.ui \
     chatpage.ui \
     mainwindow.ui \
     newchat.ui \
-    signup_page.ui
+    signup_page.ui \
+    signupform.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

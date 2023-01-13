@@ -27,8 +27,8 @@ background-color: qlineargradient(spread:pad, x1:0.804, y1:0.823182, x2:0, y2:0,
    <widget class="QFrame" name="frame">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>30</y>
+      <x>210</x>
+      <y>60</y>
       <width>361</width>
       <height>521</height>
      </rect>
@@ -234,6 +234,35 @@ color: #61ffed;
        </layout>
       </item>
      </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>801</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(71, 145, 255);</string>
+    </property>
+    <widget class="QPushButton" name="back">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>41</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/new/prefix1/graphics/previous.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
     </widget>
    </widget>
   </widget>

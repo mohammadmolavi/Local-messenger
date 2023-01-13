@@ -23,3 +23,10 @@ void Signup_page::on_verify_clicked()
     signup_form ->show() ;
 }
 
+
+void Signup_page::on_back_clicked()
+{
+    this->hide();
+    main_window -> show();
+}
+

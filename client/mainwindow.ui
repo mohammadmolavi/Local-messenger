@@ -77,7 +77,11 @@ background-color: qlineargradient(spread:pad, x1:0.804, y1:0.823182, x2:0, y2:0,
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="PassWWord"/>
+              <widget class="QLineEdit" name="PassWWord">
+               <property name="echoMode">
+                <enum>QLineEdit::Password</enum>
+               </property>
+              </widget>
              </item>
             </layout>
            </widget>

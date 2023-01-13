@@ -15,6 +15,11 @@ public:
     explicit signupform(QWidget *parent = nullptr, QMainWindow * signuppage =0);
     ~signupform();
 
+private slots:
+    void on_back_clicked();
+
+    void on_signup_clicked();
+
 private:
     Ui::signupform *ui;
     QMainWindow * signuppage ;

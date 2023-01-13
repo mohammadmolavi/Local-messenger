@@ -9,6 +9,7 @@ MainWindow::MainWindow(sockettest *sock, QWidget *parent)
     this->socket = sock;
     ui->setupUi(this);
     signuppage = new Signup_page(0,this);
+    chat_page = new chatpage(0, this);
 }
 
 MainWindow::~MainWindow()
@@ -30,6 +31,9 @@ void MainWindow::on_login_clicked()
     string check=this->socket->Login(User,Pass);
     if(check =="True")
     {
+        this->hide();
+        chat_page ->show();
+
         //go to next page
          qDebug()<<"true";
     }

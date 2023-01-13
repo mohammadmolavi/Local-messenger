@@ -18,6 +18,8 @@ public:
 private slots:
     void on_verify_clicked();
 
+    void on_back_clicked();
+
 private:
     Ui::Signup_page *ui;
     QMainWindow * main_window;

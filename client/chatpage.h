@@ -12,7 +12,7 @@ class chatpage : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit chatpage(QWidget *parent = nullptr);
+    explicit chatpage(QWidget *parent = nullptr ,QMainWindow * main_window =0);
     ~chatpage();
 
 private slots:
@@ -22,6 +22,8 @@ private slots:
 
 private:
     Ui::chatpage *ui;
+    QMainWindow * main_window;
+    chatpage * chat_page;
 };
 
 #endif // CHATPAGE_H

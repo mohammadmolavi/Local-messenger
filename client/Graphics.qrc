@@ -7,5 +7,6 @@
         <file>graphics/megaphone.png</file>
         <file>graphics/previous.png</file>
         <file>graphics/send.png</file>
+        <file>graphics/group-users.png</file>
     </qresource>
 </RCC>

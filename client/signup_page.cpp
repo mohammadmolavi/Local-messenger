@@ -24,12 +24,12 @@ void Signup_page::on_verify_clicked()
     string Phonenumber;
     Phonenumber=phonenumber.toStdString();
     string check=this->socket->Verify(Phonenumber);
-    if(check=="True")
+   // if(check=="True")
     {
         this ->hide() ;
         signup_form ->show() ;
     }
-    else
+    //else
     {
         this->ui->phonenumber->clear();
         QMessageBox ms;

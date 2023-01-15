@@ -81,22 +81,6 @@ color: #61ffed;
       <string>+ New Chat</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_6">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>10</y>
-       <width>61</width>
-       <height>61</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border-image: url(:/new/prefix1/graphics/friend.png);</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
     <widget class="QListWidget" name="contactlist">
      <property name="geometry">
       <rect>
@@ -117,6 +101,25 @@ color: #61ffed;
      </property>
      <property name="autoScrollMargin">
       <number>16</number>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>10</y>
+       <width>61</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="Graphics.qrc">:/new/prefix1/graphics/friend.png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
      </property>
     </widget>
    </widget>
@@ -157,13 +160,13 @@ color: #61ffed;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-image: url(:/new/prefix1/graphics/friend.png);</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>:/image/grafic/friend.png</pixmap>
+       <pixmap resource="Graphics.qrc">:/new/prefix1/graphics/friend.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -292,6 +295,22 @@ color: #61ffed;
       </widget>
      </widget>
     </widget>
+    <widget class="QLabel" name="testlable">
+     <property name="geometry">
+      <rect>
+       <x>230</x>
+       <y>109</y>
+       <width>221</width>
+       <height>241</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -306,6 +325,8 @@ color: #61ffed;
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="Graphics.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -49,13 +49,19 @@ background-color: qlineargradient(spread:pad, x1:0.804, y1:0.823182, x2:0, y2:0,
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">border-image: url(:/new/prefix1/graphics/friend.png);</string>
+      <string notr="true"/>
      </property>
      <property name="text">
       <string/>
      </property>
+     <property name="pixmap">
+      <pixmap resource="Graphics.qrc">:/new/prefix1/graphics/friend.png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
     </widget>
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="change_photo">
      <property name="geometry">
       <rect>
        <x>130</x>
@@ -262,6 +268,8 @@ color: #61ffed;
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="Graphics.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -24,12 +24,17 @@ private slots:
 
     void on_active_chat_profile_linkActivated(const QString &link);
 
+    void on_attach_clicked();
+
+    void on_testlable_linkActivated(const QString &link);
+
 private:
     Ui::chatpage *ui;
     QMainWindow * main_window;
     chatpage * chat_page;
     newchat *new_chat;
     addcontacts *add_contact;
+    QPixmap bufferedImage;
 };
 
 #endif // CHATPAGE_H

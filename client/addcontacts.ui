@@ -133,11 +133,15 @@ color: #61ffed;
    <widget class="QListWidget" name="contactlist">
     <property name="geometry">
      <rect>
-      <x>375</x>
-      <y>60</y>
-      <width>381</width>
-      <height>461</height>
+      <x>380</x>
+      <y>80</y>
+      <width>351</width>
+      <height>421</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 30px;
+</string>
     </property>
    </widget>
   </widget>

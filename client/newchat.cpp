@@ -10,8 +10,14 @@ newchat::newchat(QWidget *parent , QMainWindow * chat_page) :
     QListWidgetItem *item =new QListWidgetItem(QIcon(":/new/prefix1/graphics/friend.png"),"ali");
     ui-> contactlist->addItem((item));
 }
-//QPushButton(":/new/prefix1/graphics/friend.png"),"ali"
+
 newchat::~newchat()
 {
     delete ui;
 }
+
+void newchat::on_back_clicked()
+{
+    this->hide();
+}
+

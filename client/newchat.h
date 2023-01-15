@@ -15,6 +15,9 @@ public:
     explicit newchat(QWidget *parent = nullptr , QMainWindow * chat_page =0);
     ~newchat();
 
+private slots:
+    void on_back_clicked();
+
 private:
     Ui::newchat *ui;
     QMainWindow * chat_page;

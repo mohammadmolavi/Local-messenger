@@ -5,6 +5,7 @@
 #include "chatpage.h"
 #include "clientsocket.h"
 #include "QDebug"
+#include<QFileDialog>
 signupform::signupform(sockettest * sock,QWidget *parent , QMainWindow * signuppage) :
     QMainWindow(parent),
     ui(new Ui::signupform)
@@ -38,5 +39,30 @@ void signupform::on_signup_clicked()
    {
        qDebug()<<"yes";
    }
+}
+
+
+
+
+
+void signupform::on_change_photo_clicked()
+{
+    auto path = QFileDialog::getOpenFileName(this, tr("Open image"),
+                                             "", tr("*.png *.jpg *.jpeg"));
+    qDebug() << path << '\n';
+    // Get image name from string
+    auto imageName = path.split("/").last();
+   // QImage img;
+    //img.load(path);
+  //  bufferedImage.fromImage(img);
+
+    //ui->activeprofile->clear();
+    QPixmap pixmap(path);
+    ui->activeprofile->setPixmap(pixmap);
+   // ui->testlable->setMask(pixmap.mask());
+
+    // Make UI visible
+    ui->activeprofile->setVisible(true);
+    ui->activeprofile->show();
 }
 

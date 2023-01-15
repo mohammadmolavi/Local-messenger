@@ -1,14 +1,14 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "clientsocket.h"
-#include "QDebug"
+#include "QMessageBox"
 MainWindow::MainWindow(sockettest *sock, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     this->socket = sock;
     ui->setupUi(this);
-    signuppage = new Signup_page(0,this);
+    signuppage = new Signup_page(this->socket,0,this);
     chat_page = new chatpage(0, this);
 }
 
@@ -33,23 +33,22 @@ void MainWindow::on_login_clicked()
     {
         this->hide();
         chat_page ->show();
-
-        //go to next page
-         qDebug()<<"true";
     }
-    //alert
-
     else if (check=="False")
     {
-       qDebug()<<"False";
+        QMessageBox ms;
+        ms.setText("The Username Or Password is not correct! please try again.");
+        ms.exec();
+        this->ui->Username->clear();
+        this->ui->PassWWord->clear();
     }
 }
 
 
 void MainWindow::on_signup_clicked()
 {
+    this->socket->pagesignup("signup");
     signuppage ->show();
     this->hide();
-    this->socket->signup("signup");
 }
 

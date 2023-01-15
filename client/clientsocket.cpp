@@ -20,12 +20,40 @@ void sockettest::connect()
          qDebug()<<"Not connected";
      }
 }
-void sockettest::signup(string test)
+
+string sockettest::Verify(string phonenumber)
+{
+    socket->write(phonenumber.c_str());
+    socket->waitForBytesWritten(1000);
+    socket->waitForReadyRead(2000);
+    if(socket->readAll()=="False")
+    {
+          return "True";
+    }
+    else
+        return "False";
+}
+void sockettest::pagesignup(string test)
 {
     socket->write(test.c_str());
-     socket->waitForBytesWritten(1000);
-     socket->waitForReadyRead(2000);
-      qDebug()<<"waiting :"<<socket->bytesAvailable();
+    socket->waitForBytesWritten(1000);
+}
+string sockettest::signup(string name ,string Username,string Email,string Password)
+{
+    socket->write(name.c_str());
+    socket->waitForBytesWritten(1000);
+    socket->write(Username.c_str());
+    socket->waitForBytesWritten(1000);
+    socket->write(Email.c_str());
+    socket->waitForBytesWritten(1000);
+    socket->write(Password.c_str());
+    socket->waitForBytesWritten(1000);
+    if(socket->readAll()=="True")
+    {
+          return "True";
+    }
+    else
+        return "False";
 }
 
 
@@ -51,4 +79,3 @@ void sockettest::reads()
     qDebug()<<socket->readAll();
 }
 
-//SocketTest mahroo;

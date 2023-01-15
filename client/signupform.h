@@ -2,7 +2,7 @@
 #define SIGNUPFORM_H
 
 #include <QMainWindow>
-
+#include "clientsocket.h"
 namespace Ui {
 class signupform;
 }
@@ -12,12 +12,11 @@ class signupform : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit signupform(QWidget *parent = nullptr, QMainWindow * signuppage =0);
+    sockettest * socket;
+    explicit signupform(sockettest * sock, QWidget *parent = nullptr, QMainWindow * signuppage =0);
     ~signupform();
 
 private slots:
-    void on_back_clicked();
-
     void on_signup_clicked();
 
 private:

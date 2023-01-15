@@ -43,14 +43,11 @@ public:
     QVBoxLayout *verticalLayout_3;
     QLabel *label_2;
     QLineEdit *PassWWord;
-    QWidget *widget_5;
-    QHBoxLayout *horizontalLayout;
-    QSpacerItem *horizontalSpacer_3;
-    QPushButton *login;
-    QPushButton *signup;
-    QSpacerItem *horizontalSpacer_4;
     QSpacerItem *horizontalSpacer_2;
     QWidget *widget_6;
+    QPushButton *signup;
+    QPushButton *login;
+    QLabel *label_4;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -59,8 +56,14 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
         MainWindow->resize(800, 600);
+        MainWindow->setStyleSheet(QString::fromUtf8("QMainWindow#MainWindow{\n"
+"background-color: qlineargradient(spread:pad, x1:0.804, y1:0.823182, x2:0, y2:0, stop:0 rgba(170, 255, 225, 255), stop:1 rgba(77, 160, 255, 255));\n"
+"}"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
+        centralwidget->setStyleSheet(QString::fromUtf8("QWidget#centralwidget{\n"
+"background-color: qlineargradient(spread:pad, x1:0.804, y1:0.823182, x2:0, y2:0, stop:0 rgba(170, 255, 225, 255), stop:1 rgba(77, 160, 255, 255));\n"
+"}"));
         verticalLayout_4 = new QVBoxLayout(centralwidget);
         verticalLayout_4->setObjectName("verticalLayout_4");
         widget_7 = new QWidget(centralwidget);
@@ -108,36 +111,12 @@ public:
 
         PassWWord = new QLineEdit(widget_4);
         PassWWord->setObjectName("PassWWord");
+        PassWWord->setEchoMode(QLineEdit::Password);
 
         verticalLayout_3->addWidget(PassWWord);
 
 
         verticalLayout->addWidget(widget_4);
-
-        widget_5 = new QWidget(widget_2);
-        widget_5->setObjectName("widget_5");
-        horizontalLayout = new QHBoxLayout(widget_5);
-        horizontalLayout->setObjectName("horizontalLayout");
-        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout->addItem(horizontalSpacer_3);
-
-        login = new QPushButton(widget_5);
-        login->setObjectName("login");
-
-        horizontalLayout->addWidget(login);
-
-        signup = new QPushButton(widget_5);
-        signup->setObjectName("signup");
-
-        horizontalLayout->addWidget(signup);
-
-        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout->addItem(horizontalSpacer_4);
-
-
-        verticalLayout->addWidget(widget_5);
 
 
         horizontalLayout_2->addWidget(widget_2);
@@ -151,6 +130,61 @@ public:
 
         widget_6 = new QWidget(centralwidget);
         widget_6->setObjectName("widget_6");
+        signup = new QPushButton(widget_6);
+        signup->setObjectName("signup");
+        signup->setGeometry(QRect(330, 70, 131, 31));
+        signup->setStyleSheet(QString::fromUtf8("QPushButton \n"
+"{\n"
+"border-radius: 12px;\n"
+"background-color:#26a8ff;\n"
+"font: 700 9pt \"Helvetica Now Display\";\n"
+"color: white;\n"
+"}\n"
+"QPushButton:hover\n"
+"{\n"
+"background: #61ffed;\n"
+"}\n"
+"QPushButton:pressed \n"
+"{\n"
+"background: white;\n"
+"border: 2px solid #61ffed; \n"
+"color: #61ffed;\n"
+"}\n"
+""));
+        login = new QPushButton(widget_6);
+        login->setObjectName("login");
+        login->setGeometry(QRect(330, 10, 131, 31));
+        QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(login->sizePolicy().hasHeightForWidth());
+        login->setSizePolicy(sizePolicy);
+        login->setSizeIncrement(QSize(0, 0));
+        login->setStyleSheet(QString::fromUtf8("QPushButton \n"
+"{\n"
+"border-radius: 12px;\n"
+"background-color:#26a8ff;\n"
+"font: 700 9pt \"Helvetica Now Display\";\n"
+"color: white;\n"
+"}\n"
+"QPushButton:hover\n"
+"{\n"
+"background: #61ffed;\n"
+"}\n"
+"QPushButton:pressed \n"
+"{\n"
+"background: white;\n"
+"border: 2px solid #61ffed; \n"
+"color: #61ffed;\n"
+"}\n"
+""));
+        login->setIconSize(QSize(20, 20));
+        label_4 = new QLabel(widget_6);
+        label_4->setObjectName("label_4");
+        label_4->setGeometry(QRect(340, 50, 131, 16));
+        QFont font;
+        font.setPointSize(7);
+        label_4->setFont(font);
 
         verticalLayout_4->addWidget(widget_6);
 
@@ -173,8 +207,9 @@ public:
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "UserName", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "PassWord", nullptr));
-        login->setText(QCoreApplication::translate("MainWindow", "login", nullptr));
         signup->setText(QCoreApplication::translate("MainWindow", "signup", nullptr));
+        login->setText(QCoreApplication::translate("MainWindow", "login", nullptr));
+        label_4->setText(QCoreApplication::translate("MainWindow", "Don't have any account?", nullptr));
     } // retranslateUi
 
 };

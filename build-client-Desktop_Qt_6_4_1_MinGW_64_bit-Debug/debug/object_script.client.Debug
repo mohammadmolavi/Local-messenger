@@ -5,6 +5,7 @@ debug/main.o
 debug/mainwindow.o
 debug/newchat.o
 debug/signup_page.o
+debug/signupform.o
 debug/qrc_Graphics.o
 debug/moc_addcontacts.o
 debug/moc_chatpage.o
@@ -12,3 +13,4 @@ debug/moc_clientsocket.o
 debug/moc_mainwindow.o
 debug/moc_newchat.o
 debug/moc_signup_page.o
+debug/moc_signupform.o

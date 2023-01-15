@@ -3,14 +3,14 @@
 #include "signup_page.h"
 #include "mainwindow.h"
 #include "chatpage.h"
-signupform::signupform(QWidget *parent , QMainWindow * signuppage) :
+#include "clientsocket.h"
+signupform::signupform(sockettest * sock,QWidget *parent , QMainWindow * signuppage) :
     QMainWindow(parent),
     ui(new Ui::signupform)
 {
+    this->socket = sock;
     ui->setupUi(this);
     this-> signuppage =signuppage;
-   // this->chat_page= chat_page;
-
 }
 
 signupform::~signupform()
@@ -18,16 +18,24 @@ signupform::~signupform()
     delete ui;
 }
 
-void signupform::on_back_clicked()
-{
-    this->hide();
-    signuppage ->show();
-}
+
 
 
 void signupform::on_signup_clicked()
 {
-   // this->hide();
-    //chat_page ->show();
+   QString name=this->ui->name->text();
+   QString username=this->ui->username->text();
+   QString email=this->ui->email->text();
+   QString password=this->ui->passworde->text();
+   string Name,Username,Email,Password;
+   Name=name.toStdString();
+   Username=username.toStdString();
+   Email=email.toStdString();
+   Password=password.toStdString();
+   string check=this->socket->signup(Name,Username,Email,Password);
+   if(check=="True")
+   {
+
+   }
 }
 

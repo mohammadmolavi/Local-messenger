@@ -248,22 +248,6 @@ color: #61ffed;
     <property name="styleSheet">
      <string notr="true">background-color: rgb(71, 145, 255);</string>
     </property>
-    <widget class="QPushButton" name="back">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>10</y>
-       <width>41</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border-image: url(:/new/prefix1/graphics/previous.png);</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

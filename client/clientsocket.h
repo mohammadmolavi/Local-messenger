@@ -15,7 +15,9 @@ public:
    void connect();
    void reads();
    string Login(string Username , string Password);
-   void signup(string test);
+   string Verify(string phonenumber);
+   string signup(string name,string Username,string Email,string Password);
+   void pagesignup(string test);
 
 signals:
 

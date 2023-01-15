@@ -2,7 +2,7 @@
 #define SIGNUP_PAGE_H
 #include<signupform.h>
 #include <QMainWindow>
-
+#include "clientsocket.h"
 namespace Ui {
 class Signup_page;
 }
@@ -12,7 +12,8 @@ class Signup_page : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit Signup_page(QWidget *parent = nullptr , QMainWindow * main_window =0);
+      sockettest * socket;
+    explicit Signup_page(sockettest * sock, QWidget *parent = nullptr , QMainWindow * main_window =0);
     ~Signup_page();
 
 private slots:

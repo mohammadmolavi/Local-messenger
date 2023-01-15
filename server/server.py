@@ -66,21 +66,59 @@ def connect_client(sock):
         t2.start()
 
 
-def signup(con):
-    print("signup")
-    fullname = con.recv(1024).decode()
+def verify(con):
+    print("verify")
+    phone = con.recv(1024).decode()
+    print(phone)
+    connection = mysql.connector.connect(host='localhost',
+                                         database='messenger',
+                                         user='root',
+                                         password='')
+
+    cursor = connection.cursor()
+    cursor.execute("SELECT Phonenumber FROM clients ")
+    myresult = cursor.fetchall()
+    check = False
+    for x in myresult:
+        if (x[0]==phone):
+            check = True
+            break
+
+    if (check == False):
+        con.send("False".encode())
+        # login(con)
+    else:
+        con.send("True".encode())
+        signup(con,phone)
+
+
+
+
+def signup(con,phone):
+    name = con.recv(1024).decode()
     username = con.recv(1024).decode()
     email = con.recv(1024).decode()
-    phone = con.recv(1024).decode()
     password = con.recv(1024).decode()
-    # insert the information to db
-    login(con)
+    connection = mysql.connector.connect(host='localhost',
+                                         database='messenger',
+                                         user='root',
+                                         password='')
 
+    cursor = connection.cursor()
+    sql = "INSERT INTO clients (Username,Email,phonenumber,Fullname,password) VALUES (%s,%s,%s,%s,%s)"
+    val = (username,email,phone,name,password)
+    cursor.execute(sql, val)
+    connection.commit()
+    # print(cursor.rowcount, "record inserted.")
+    if(cursor.rowcount):
+        con.send("True".encode())
+    else:
+        con.send("False".encode())
 
 def login(con):
     username = con.recv(1024).decode()
     if (username== "signup"):
-        signup(con)
+        verify(con)
         return
     password = con.recv(1024).decode()
     connection = mysql.connector.connect(host='localhost',
@@ -96,7 +134,6 @@ def login(con):
     check=False
     for x in myresult:
         if(x[0] ==username and x[1]==password):
-            con.send("True".encode())
             check=True
             break
 
@@ -104,7 +141,7 @@ def login(con):
         con.send("False".encode())
         login(con)
     else:
-        pass
+        con.send("True".encode())
 
 
 def main():

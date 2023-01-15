@@ -86,19 +86,22 @@ def verify(con):
 
     if (check == False):
         con.send("False".encode())
-        # login(con)
+        signup(con, phone)
     else:
         con.send("True".encode())
-        signup(con,phone)
-
+        verify(con)
 
 
 
 def signup(con,phone):
     name = con.recv(1024).decode()
+    print(name)
     username = con.recv(1024).decode()
+    print(username)
     email = con.recv(1024).decode()
+    print(email)
     password = con.recv(1024).decode()
+    print(password)
     connection = mysql.connector.connect(host='localhost',
                                          database='messenger',
                                          user='root',
@@ -109,7 +112,7 @@ def signup(con,phone):
     val = (username,email,phone,name,password)
     cursor.execute(sql, val)
     connection.commit()
-    # print(cursor.rowcount, "record inserted.")
+    print(cursor.rowcount, "record inserted.")
     if(cursor.rowcount):
         con.send("True".encode())
     else:

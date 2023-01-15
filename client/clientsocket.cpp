@@ -42,12 +42,20 @@ string sockettest::signup(string name ,string Username,string Email,string Passw
 {
     socket->write(name.c_str());
     socket->waitForBytesWritten(1000);
+    socket->waitForReadyRead(2000);
+     qDebug()<<"waiting :"<<socket->bytesAvailable();
     socket->write(Username.c_str());
     socket->waitForBytesWritten(1000);
+    socket->waitForReadyRead(2000);
+     qDebug()<<"waiting :"<<socket->bytesAvailable();
     socket->write(Email.c_str());
     socket->waitForBytesWritten(1000);
+    socket->waitForReadyRead(2000);
+     qDebug()<<"waiting :"<<socket->bytesAvailable();
     socket->write(Password.c_str());
     socket->waitForBytesWritten(1000);
+    socket->waitForReadyRead(2000);
+     qDebug()<<"waiting :"<<socket->bytesAvailable();
     if(socket->readAll()=="True")
     {
           return "True";

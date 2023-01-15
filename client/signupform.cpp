@@ -4,6 +4,7 @@
 #include "mainwindow.h"
 #include "chatpage.h"
 #include "clientsocket.h"
+#include "QDebug"
 signupform::signupform(sockettest * sock,QWidget *parent , QMainWindow * signuppage) :
     QMainWindow(parent),
     ui(new Ui::signupform)
@@ -35,7 +36,7 @@ void signupform::on_signup_clicked()
    string check=this->socket->signup(Name,Username,Email,Password);
    if(check=="True")
    {
-
+       qDebug()<<"yes";
    }
 }
 

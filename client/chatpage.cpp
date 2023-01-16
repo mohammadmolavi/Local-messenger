@@ -6,15 +6,16 @@
 #include<QImage>
 #include <QPixmap>
 #include <QLabel>
-
-chatpage::chatpage(QWidget *parent , QMainWindow * chat_page) :
+#include "clientsocket.h"
+chatpage::chatpage(sockettest *sock,QWidget *parent , QMainWindow * chat_page) :
     QMainWindow(parent),
     ui(new Ui::chatpage)
 {
+    this->socket=sock;
     ui->setupUi(this);
     this -> main_window =main_window;
     new_chat = new newchat(0, this);
-    add_contact = new addcontacts(0,this);
+    add_contact = new addcontacts(this->socket,0,this);
     ui->testlable->setVisible(false);
     QListWidgetItem *item =new QListWidgetItem(QIcon(":/new/prefix1/graphics/friend.png"),"ali");
     ui-> contactlist->addItem((item));
@@ -39,8 +40,8 @@ void chatpage::on_newchat_clicked()
 
 void chatpage::on_addcontact_clicked()
 {
+    this->socket->verifycontact();
     add_contact ->show();
-
 }
 
 
@@ -75,12 +76,5 @@ void chatpage::on_attach_clicked()
     // Make UI visible
     ui->testlable->setVisible(true);
     ui->testlable->show();
-}
-
-
-void chatpage::on_testlable_linkActivated(const QString &link)
-{
-    //ui->testlable->setPixmap();
-
 }
 

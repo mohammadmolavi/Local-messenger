@@ -18,7 +18,9 @@ public:
    string Verify(string phonenumber);
    string signup(string name,string Username,string Email,string Password);
    void pagesignup(string test);
-
+   void setprofile(QString path);
+   string checkcontact(string username,string password);
+   void verifycontact();
 signals:
 
 };

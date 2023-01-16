@@ -9,7 +9,7 @@ MainWindow::MainWindow(sockettest *sock, QWidget *parent)
     this->socket = sock;
     ui->setupUi(this);
     signuppage = new Signup_page(this->socket,0,this);
-    chat_page = new chatpage(0, this);
+    chat_page = new chatpage(this->socket,0, this);
 }
 
 MainWindow::~MainWindow()

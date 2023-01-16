@@ -145,6 +145,53 @@ def login(con):
         login(con)
     else:
         con.send("True".encode())
+        chat(con)
+
+
+
+def chat(con):
+    print("chat")
+    check=con.recv(1024).decode()
+    print(check)
+    if(check=="addcontct"):
+        verifycontact(con)
+        return
+
+
+
+
+
+def verifycontact(con):
+    print("verifycontact")
+    username = con.recv(1024).decode()
+    print(username)
+    password = con.recv(1024).decode()
+    print(password)
+    connection = mysql.connector.connect(host='localhost',
+                                         database='messenger',
+                                         user='root',
+                                         password='')
+
+    cursor = connection.cursor()
+    cursor.execute("SELECT Username,Password FROM clients ")
+    myresult = cursor.fetchall()
+    check = False
+    for x in myresult:
+        if (x[0] == username and x[1] == password):
+            check = True
+            break
+
+    if (check == False):
+        con.send("False".encode())
+
+    else:
+        con.send("True".encode())
+    username = ""
+    password = ""
+    verifycontact(con)
+
+
+
 
 
 def main():

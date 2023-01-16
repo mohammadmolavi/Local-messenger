@@ -19,8 +19,6 @@ public:
 private slots:
     void on_signup_clicked();
 
-
-
     void on_change_photo_clicked();
 
 private:

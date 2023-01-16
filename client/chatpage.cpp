@@ -78,3 +78,17 @@ void chatpage::on_attach_clicked()
     ui->testlable->show();
 }
 
+
+void chatpage::on_send_clicked()
+{
+    QLabel *label = new QLabel(this);
+    label->setFrameStyle(QFrame::Panel | QFrame::Sunken);
+    label->setText(ui->textEdit->toPlainText());
+    label->setAlignment(Qt::AlignBottom | Qt::AlignRight);
+   // label->setBuddy();
+
+
+    ui->sendlist->addItem(label->text());
+    ui->textEdit->clear();
+}
+

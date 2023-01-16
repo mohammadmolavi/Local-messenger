@@ -6,6 +6,7 @@
 #include<QImage>
 #include <QPixmap>
 #include <QLabel>
+#include <QDebug>
 
 chatpage::chatpage(QWidget *parent , QMainWindow * chat_page) :
     QMainWindow(parent),

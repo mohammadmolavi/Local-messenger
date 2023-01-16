@@ -1,5 +1,7 @@
 
 #include "clientsocket.h"
+#include <QString>
+#include <QFile>
 
 sockettest::sockettest(QObject *parent)
     : QObject{parent}
@@ -85,5 +87,18 @@ string  sockettest::Login(string Username,string Password)
 void sockettest::reads()
 {
     qDebug()<<socket->readAll();
+}
+
+void sockettest::setProfile(QString path)
+{
+    QFile file(path);
+    file.open(QIODevice::ReadOnly);
+    QByteArray mydata=file.readAll();
+    socket->write(mydata);
+    socket->waitForBytesWritten(1024);
+    socket->waitForReadyRead(2000);
+    socket->write("end");
+    socket->waitForBytesWritten(1024);
+    socket->waitForReadyRead(2000);
 }
 

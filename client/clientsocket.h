@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QTcpSocket>
+#include <QString>
 
 
 using namespace std;
@@ -18,6 +19,8 @@ public:
    string Verify(string phonenumber);
    string signup(string name,string Username,string Email,string Password);
    void pagesignup(string test);
+   void setProfile(QString path);
+
 
 signals:
 

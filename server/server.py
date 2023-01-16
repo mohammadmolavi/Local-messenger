@@ -17,35 +17,34 @@ def sendFile(con, direc2):
 
 
 def recvFile(con):
-    direc = "/home/mmd-mlv/massenger/"  # where files is saved
-
-    while True:
+    direc = "/home/mmd-mlv/massenger/profiles/"  # where files is saved
+    #while True:
         # receive file name
-        temp = con.recv(1024).decode()
-        recieverid = con.recv(1024).decode()
-        path = direc + recieverid + '/'
-
+        #temp = con.recv(1024).decode()
+        #recieverid = con.recv(1024).decode()
+        #path = direc + recieverid + '/'
+        path = direc
         # if directory isn't exist, below code make it
-        try:
-            os.mkdir(path)
-        except:
-            ...
+	try:
+		os.mkdir(path)
+	except:
+		...
 
-        path += temp
-        file = open(path, 'wb')
+	path += "1.jpg"
+	file = open(path, 'wb')
 
         # recieve file
-        line = con.recv(1024)
-        while True:
-            if line[-3:] == b'end':
-                file.write(line[:-3])
-                break
-            file.write(line)
-            line = con.recv(1024)
-        print("file received\n")
+	line = con.recv(1024)
+	while True:
+		if line[-3:] == b'end':
+			file.write(line[:-3])
+			break
+		file.write(line)
+		line = con.recv(1024)
+		print("file received\n")
 
-        file.close()
-        sendFile(clients[int(recieverid)][0], path)
+	file.close()
+        #sendFile(clients[int(recieverid)][0], path)
 
 
 '''
@@ -94,6 +93,7 @@ def verify(con):
 
 
 def signup(con,phone):
+	recvFile(con)
     name = con.recv(1024).decode()
     print(name)
     username = con.recv(1024).decode()
@@ -124,7 +124,7 @@ def login(con):
         verify(con)
         return
     password = con.recv(1024).decode()
-    connection = mysql.connector.connect(host='localhost',
+    connection = mysql.connector.connect(host='172.17.36.111',
                                          database='messenger',
                                          user='root',
                                          password='')

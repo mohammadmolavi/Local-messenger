@@ -16,6 +16,9 @@ public:
     sockettest * socket;
     explicit chatpage(sockettest * sock,QWidget *parent = nullptr ,QMainWindow * main_window =0);
     ~chatpage();
+    Ui::chatpage *ui;
+
+
 
 private slots:
     void on_newchat_clicked();
@@ -27,7 +30,6 @@ private slots:
     void on_send_clicked();
 
 private:
-    Ui::chatpage *ui;
     QMainWindow * main_window;
     chatpage * chat_page;
     newchat *new_chat;

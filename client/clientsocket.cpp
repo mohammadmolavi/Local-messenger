@@ -1,6 +1,9 @@
 
 #include "clientsocket.h"
 #include <QFile>
+#include <QString>
+#include "QDebug"
+QString sech;
 sockettest::sockettest(QObject *parent)
     : QObject{parent}
 {
@@ -21,34 +24,9 @@ void sockettest::connect()
      }
 }
 
-//void sockettest::setprofile(QString  path)
-//{
-
-//    QFile inputFile(path);
-//    QByteArray read = inputFile.readAll();
-//    socket->write(read);
-//    socket->write("end");
-//    QDataStream stream(read);
-//     while(1)
-//     {
-//         read.clear();
-//         read = inputFile.read(inputFile.size());
-//         qDebug() << "Read : " << read.size();
-//         if(read.size()==0)
-//              break;
-//         qDebug() << "Written : " << socket->write(read);
-//         socket->waitForBytesWritten();
-//         read.clear();
-//     }
-
-//    int n;
-//    socket->waitForBytesWritten(1000);
-//    socket->waitForReadyRead(2000);
-//}
-
 void sockettest::verifycontact()
 {
-    socket->write("addcontct");
+    socket->write("addcontact");
     socket->waitForBytesWritten(1000);
     socket->waitForReadyRead(2000);
 }
@@ -64,10 +42,14 @@ string sockettest::checkcontact(string username,string password)
       qDebug()<<"waiting :"<<socket->bytesAvailable();
       if(socket->readAll()=="True")
       {
+          qDebug()<<"True";
             return "True";
       }
       else
-          return "False";
+      {
+          qDebug()<<"False";
+           return "False";
+      }
 }
 
 string sockettest::Verify(string phonenumber)
@@ -117,22 +99,61 @@ string sockettest::signup(string name ,string Username,string Email,string Passw
 string  sockettest::Login(string Username,string Password)
 {
      socket->write(Username.c_str());
-     socket->waitForBytesWritten(1000);
-     socket->waitForReadyRead(2000);
+     socket->waitForBytesWritten(1024);
+     socket->waitForReadyRead(1024);
       qDebug()<<"waiting :"<<socket->bytesAvailable();
       socket->write(Password.c_str());
-      socket->waitForBytesWritten(1000);
-      socket->waitForReadyRead(2000);
+      socket->waitForBytesWritten(1024);
+      socket->waitForReadyRead(1024);
        qDebug()<<"waiting :"<<socket->bytesAvailable();
-       if(socket->readAll()=="False")
+       if((sech =socket->readAll())=="False")
        {
-             return "False";
+           qDebug() <<  sech;
+           return "False";
+       }
+       else if (sech == "True")
+       {
+           qDebug() << sech;
+           recvContact();
+           return "True";
        }
        else
-           return "True";
+       {
+           qDebug() << sech;
+           return "gorg";
+        }
+
 }
 void sockettest::reads()
 {
     qDebug()<<socket->readAll();
+
+}
+
+void sockettest::setProfile(QString path)
+{
+    QFile file(path);
+    file.open(QIODevice::ReadOnly);
+    QByteArray mydata = file.readAll();
+    socket->write(mydata);
+    socket->waitForBytesWritten(1024);
+    socket->waitForReadyRead(2000);
+    socket->write("end");
+    socket->waitForBytesWritten(1024);
+    socket->waitForReadyRead(2000);
+}
+
+void sockettest::recvContact()
+{
+    socket->write("ready");
+    socket->waitForBytesWritten(1024);
+    socket->waitForReadyRead(2000);
+    this->contacts = socket->readAll();
+    qDebug() << contacts;
+}
+
+QString sockettest::get_contacts()
+{
+    return this->contacts;
 }
 

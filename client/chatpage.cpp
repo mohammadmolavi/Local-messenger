@@ -1,4 +1,5 @@
 #include "chatpage.h"
+#include "ui_addcontacts.h"
 #include "ui_chatpage.h"
 #include "newchat.h"
 #include "addcontacts.h"
@@ -17,12 +18,7 @@ chatpage::chatpage(sockettest *sock,QWidget *parent , QMainWindow * chat_page) :
     new_chat = new newchat(0, this);
     add_contact = new addcontacts(this->socket,0,this);
     ui->testlable->setVisible(false);
-    QListWidgetItem *item =new QListWidgetItem(QIcon(":/new/prefix1/graphics/friend.png"),"ali");
-    ui-> contactlist->addItem((item));
-    QListWidgetItem *item1 =new QListWidgetItem(QIcon(":/new/prefix1/graphics/friend.png"),"sara");
-    ui-> contactlist->addItem((item1));
-    QListWidgetItem *item2 =new QListWidgetItem(QIcon(":/new/prefix1/graphics/friend.png"),"nrgs");
-    ui-> contactlist->addItem((item2));
+
 
 }
 
@@ -41,7 +37,18 @@ void chatpage::on_newchat_clicked()
 void chatpage::on_addcontact_clicked()
 {
     this->socket->verifycontact();
+    add_contact->ui->contactlist->clear();
+    QStringList contacts;
+    contacts = this->socket->get_contacts().split(",");
+    QListWidgetItem *item =new QListWidgetItem(QIcon(":/new/prefix1/graphics/friend.png"),contacts[0]);
+    add_contact->ui->contactlist->addItem((item));
+    for(int i = 1 ; i<contacts.size()-1;i++)
+    {
+        item =new QListWidgetItem(QIcon(":/new/prefix1/graphics/friend.png"),contacts[i]);
+        add_contact->ui-> contactlist->addItem((item));
+    }
     add_contact ->show();
+
 }
 
 
@@ -87,8 +94,9 @@ void chatpage::on_send_clicked()
     label->setAlignment(Qt::AlignBottom | Qt::AlignRight);
    // label->setBuddy();
 
-
     ui->sendlist->addItem(label->text());
     ui->textEdit->clear();
+
+
 }
 

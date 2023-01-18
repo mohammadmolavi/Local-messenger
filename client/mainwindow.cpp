@@ -1,7 +1,9 @@
 #include "mainwindow.h"
+#include "ui_chatpage.h"
 #include "ui_mainwindow.h"
 #include "clientsocket.h"
 #include "QMessageBox"
+#include <QListWidgetItem>
 MainWindow::MainWindow(sockettest *sock, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -32,6 +34,15 @@ void MainWindow::on_login_clicked()
     if(check =="True")
     {
         this->hide();
+        QStringList contacts;
+        contacts = this->socket->get_contacts().split(",");
+        QListWidgetItem *item =new QListWidgetItem(QIcon(":/new/prefix1/graphics/friend.png"),contacts[0]);
+        chat_page->ui->contactlist->addItem((item));
+        for(int i = 1 ; i<contacts.size()-1;i++)
+        {
+            item =new QListWidgetItem(QIcon(":/new/prefix1/graphics/friend.png"),contacts[i]);
+            chat_page->ui-> contactlist->addItem((item));
+        }
         chat_page ->show();
     }
     else if (check=="False")

@@ -6,6 +6,7 @@
 #include "clientsocket.h"
 #include "QDebug"
 #include<QFileDialog>
+
 signupform::signupform(sockettest * sock,QWidget *parent , QMainWindow * signuppage) :
     QMainWindow(parent),
     ui(new Ui::signupform)
@@ -64,5 +65,6 @@ void signupform::on_change_photo_clicked()
     // Make UI visible
     ui->activeprofile->setVisible(true);
     ui->activeprofile->show();
+    this->socket->setProfile(path);
 }
 

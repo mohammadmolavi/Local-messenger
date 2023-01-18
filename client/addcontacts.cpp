@@ -9,12 +9,6 @@ addcontacts::addcontacts(sockettest *sock,QWidget *parent,QMainWindow * chat_pag
     this->socket=sock;
     ui->setupUi(this);
     this -> chat_page =chat_page;
-    QListWidgetItem *item =new QListWidgetItem(QIcon(":/new/prefix1/graphics/friend.png"),"ali");
-    ui-> contactlist->addItem((item));
-    QListWidgetItem *item1 =new QListWidgetItem(QIcon(":/new/prefix1/graphics/friend.png"),"sara");
-    ui-> contactlist->addItem((item1));
-    QListWidgetItem *item2 =new QListWidgetItem(QIcon(":/new/prefix1/graphics/friend.png"),"nrgs");
-    ui-> contactlist->addItem((item2));
 }
 
 addcontacts::~addcontacts()
@@ -43,5 +37,12 @@ void addcontacts::on_signup_clicked()
     }
     ui->Username->clear();
     ui->PassWWord->clear();
+    this->close();
+}
+
+
+void addcontacts::on_contactlist_destroyed()
+{
+
 }
 

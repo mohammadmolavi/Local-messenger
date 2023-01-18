@@ -19,6 +19,16 @@ chatpage::chatpage(sockettest *sock,QWidget *parent , QMainWindow * chat_page) :
     add_contact = new addcontacts(this->socket,0,this);
     ui->testlable->setVisible(false);
 
+    this->socket->socket->write("ready");
+    this->socket->socket->waitForBytesWritten(1000);
+    this->socket->socket->waitForReadyRead(2000);
+    QString messseg =this->socket->socket->readAll();
+
+    QLabel *label = new QLabel(this);
+    label->setFrameStyle(QFrame::Panel | QFrame::Sunken);
+    label->setText(messseg);
+    label->setAlignment(Qt::AlignBottom | Qt::AlignRight);
+
 
 }
 
@@ -54,6 +64,7 @@ void chatpage::on_addcontact_clicked()
 
 void chatpage::on_activechatname_linkActivated(const QString &link)
 {
+
 
 }
 
@@ -94,9 +105,21 @@ void chatpage::on_send_clicked()
     label->setAlignment(Qt::AlignBottom | Qt::AlignRight);
    // label->setBuddy();
 
+    string messeg =ui->textEdit->toPlainText().toStdString();
+
     ui->sendlist->addItem(label->text());
+    this->socket->socket->write(messeg.c_str());
+    this->socket->socket->waitForBytesWritten(1000);
+    this->socket->socket->waitForReadyRead(2000);
     ui->textEdit->clear();
 
 
+}
+
+
+void chatpage::on_contactlist_itemClicked(QListWidgetItem *item)
+{
+    QString name= item->text();
+    ui->activechatname->setText(name);
 }
 

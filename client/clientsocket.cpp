@@ -13,7 +13,7 @@ sockettest::sockettest(QObject *parent)
 void sockettest::connect()
 {
     socket =new QTcpSocket();
-     socket->connectToHost("127.0.0.1",12345);
+     socket->connectToHost("172.17.36.201",12345);
      if (socket->waitForConnected(3000))
      {
          qDebug()<<"connected";

@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <addcontacts.h>
 #include "clientsocket.h"
+#include<QListWidgetItem>
 namespace Ui {
 class chatpage;
 }
@@ -28,6 +29,9 @@ private slots:
     void on_attach_clicked();
 
     void on_send_clicked();
+
+
+    void on_contactlist_itemClicked(QListWidgetItem *item);
 
 private:
     QMainWindow * main_window;

@@ -19,15 +19,15 @@ chatpage::chatpage(sockettest *sock,QWidget *parent , QMainWindow * chat_page) :
     add_contact = new addcontacts(this->socket,0,this);
     ui->testlable->setVisible(false);
 
-    this->socket->socket->write("ready");
-    this->socket->socket->waitForBytesWritten(1000);
-    this->socket->socket->waitForReadyRead(2000);
-    QString messseg =this->socket->socket->readAll();
+//    this->socket->socket->write("ready");
+//    this->socket->socket->waitForBytesWritten(1000);
+//    this->socket->socket->waitForReadyRead(2000);
+//    QString messseg =this->socket->socket->readAll();
 
-    QLabel *label = new QLabel(this);
-    label->setFrameStyle(QFrame::Panel | QFrame::Sunken);
-    label->setText(messseg);
-    label->setAlignment(Qt::AlignBottom | Qt::AlignRight);
+//    QLabel *label = new QLabel(this);
+//    label->setFrameStyle(QFrame::Panel | QFrame::Sunken);
+//    label->setText(messseg);
+//    label->setAlignment(Qt::AlignBottom | Qt::AlignRight);
 
 
 }

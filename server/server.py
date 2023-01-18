@@ -127,7 +127,7 @@ def verify(con):
 
 
 def signup(con, phone):
-    recvFile(con)
+    #recvFile(con)
     name = con.recv(1024).decode()
     print(name)
     username = con.recv(1024).decode()
@@ -166,7 +166,6 @@ def login(con):
 
     cursor = connection.cursor()
     cursor.execute("SELECT Username,Password FROM clients ")
-
     myresult = cursor.fetchall()
 
     check = False
